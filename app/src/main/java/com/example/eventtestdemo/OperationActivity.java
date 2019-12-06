@@ -54,14 +54,17 @@ public class OperationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_operation);
         buttonSendEvents = (Button) findViewById(R.id.buttonSendEvents);
 
-        PrefManager prefManager = new PrefManager(this);
+        final PrefManager prefManager = new PrefManager(this);
 
 
 
         buttonSendEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                prefManager.setServiceStatrted(true);
 
+                Utility utility=new Utility();
+                utility.setServiceCheckAlarm(OperationActivity.this);
                 Intent intent=new Intent(OperationActivity.this,EventService.class);
                 startService(intent);
 //                CommunicationService communicationService = new CommunicationService(OperationActivity.this);

@@ -18,16 +18,21 @@ public class EventService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.e("Service Started ", "****************");
+        Utility utility=new Utility();
+        utility.setServiceCheckAlarm(this);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        keepAlive();
+
         Log.e("Service Started ", "  2222 22222  22222 ");
+        keepAlive();
+        Utility utility=new Utility();
+        utility.setServiceCheckAlarm(this);
         return START_STICKY;
     }
 
-    private void keepAlive() {
+    private  void keepAlive() {
         while (true) {
             try {
                 Thread.sleep(5000);

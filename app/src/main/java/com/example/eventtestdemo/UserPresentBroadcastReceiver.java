@@ -8,10 +8,12 @@ import android.util.Log;
 public class UserPresentBroadcastReceiver extends BroadcastReceiver {
 
     @Override
-    public void onReceive(Context arg0, Intent intent) {
+    public void onReceive(Context context, Intent intent) {
 
         Log.e("Message Received ","Start Service ");
-
+        Intent intent1=new Intent(context,EventService.class);
+        context.stopService(intent);
+        context.startService(intent1);
         /*Sent when the user is present after
          * device wakes up (e.g when the keyguard is gone)
          * */

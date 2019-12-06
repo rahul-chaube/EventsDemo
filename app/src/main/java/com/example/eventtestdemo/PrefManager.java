@@ -10,6 +10,8 @@ public class PrefManager {
     public static final String PREF_NAME="DebugTool";
     public static final String SERBVER_NAME="serverName";
     public static final String MOBILE_NUMBER="mobile_number";
+    public static final String IS_SERVICE_STARTED="isServiceStated";
+
     public PrefManager(Context context) {
         this.context = context;
         sharedPreferences=context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
@@ -32,5 +34,16 @@ public class PrefManager {
     public String getMobileNUmber()
     {
         return sharedPreferences.getString(MOBILE_NUMBER,"");
+    }
+
+
+    public void  setServiceStatrted(boolean status)
+    {
+        editor.putBoolean(IS_SERVICE_STARTED,status).apply();
+    }
+
+    public boolean getServiceIstarted()
+    {
+       return sharedPreferences.getBoolean(IS_SERVICE_STARTED,false);
     }
 }
